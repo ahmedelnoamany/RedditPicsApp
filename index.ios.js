@@ -1,53 +1,68 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
-  View
+  View,
+  TabBarIOS
 } from 'react-native';
+import Posts from './src/Components/Posts.js';
+import Users from './src/Components/Users.js';
+import Settings from './src/Components/Settings.js';
 
-export default class RedditPicsApp extends Component {
+class RedditPicsApp extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedTab: 'Posts'
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Hello, it's me
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <TabBarIOS
+        selectedTab = {this.state.selectedTab}
+        tintColor="black"
+        barTintColor="lightblue"
+        itemPositioning= "center"
+        unselectedTintColor= "white">
+        <TabBarIOS.Item
+          title= "Top Posts"
+          selected= {this.state.selectedTab === 'Posts'}
+          //icon = {{uri: 'featured'}}
+          onPress= {() => {
+            this.setState({
+              selectedTab: 'Posts'
+            })
+          }}>
+        <Posts />
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title= "Top Users"
+          selected = {this.state.selectedTab === 'Users'}
+          onPress = {() => {
+            this.setState({
+              selectedTab: 'Users'
+            })
+          }}>
+          <Users />
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title="Settings"
+          selected = {this.state.selectedTab === 'Settings'}
+          onPress = {() => {
+            this.setState({
+              selectedTab: 'Settings'
+            })
+          }}>
+          <Settings />
+          </TabBarIOS.Item>
+
+      </TabBarIOS>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('RedditPicsApp', () => RedditPicsApp);
