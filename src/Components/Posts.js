@@ -8,6 +8,7 @@ import{
   Text
 } from 'react-native';
 import Card from './Card.js'
+import Login from './Login.js'
 
 class Posts extends Component{
   constructor(){
@@ -21,6 +22,7 @@ class Posts extends Component{
   }
 
   componentWillMount(){
+    console.log("mounting")
     fetch('https://www.reddit.com/r/footballhighlights/top/.json?sort=top&t=all&limit=100',{
       Accept: 'application/json'
     })
@@ -54,16 +56,13 @@ class Posts extends Component{
     return (
         <View style={styles.titleContainer}>
           <View style={{flex: 0.1}}>
-            <View>
+            <View style={{flex: 0.05}}>
               <Text style={styles.text}>
                 Top Posts
               </Text>
             </View>
-            <View style={styles.button}>
-              <Button
-                title="Button"
-                color="black"
-              />
+            <View style={{flex: 0.05, flexDirection: 'row'}}>
+              <Login />
             </View>
           </View>
           <View style={{flex: 0.9}}>
@@ -129,7 +128,8 @@ const styles = StyleSheet.create({
     borderRadius: 3
   },
   titleContainer: {
-    flex: 0.9,
+    flex: 1,
+    backgroundColor: '#1b2d68'
   }
 })
 
