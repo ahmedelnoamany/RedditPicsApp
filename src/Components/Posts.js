@@ -4,6 +4,7 @@ import{
   View,
   ScrollView,
   TouchableOpacity,
+  Button,
   Text
 } from 'react-native';
 import Card from './Card.js'
@@ -51,11 +52,19 @@ class Posts extends Component{
   }
   render() {
     return (
-        <View style={styles.container}>
+        <View style={styles.titleContainer}>
           <View style={{flex: 0.1}}>
-          <Text style={styles.text}>
-            Top Posts
-          </Text>
+            <View>
+              <Text style={styles.text}>
+                Top Posts
+              </Text>
+            </View>
+            <View style={styles.button}>
+              <Button
+                title="Button"
+                color="black"
+              />
+            </View>
           </View>
           <View style={{flex: 0.9}}>
             <ScrollView>
@@ -81,22 +90,23 @@ const styles = StyleSheet.create({
     flex: 0.9,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2e3438'
+    backgroundColor: '#1b2d68',
+    padding: 1
 
   },
   text: {
     fontSize: 20,
     flexWrap: 'wrap',
-    textAlign: 'center',
+    textAlign: 'left',
     top: 20,
-    padding: 15,
-    color: 'white'
+    //padding: 15,
+    color: '#778fb7'
   },
   title: {
     fontSize: 12,
     fontWeight: '200',
     textAlign: 'left',
-    color: 'blue'
+    color: 'white'
   },
   author: {
     fontSize: 8,
@@ -107,9 +117,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     padding: 20,
-    backgroundColor: '#d0dfe8',
-    borderWidth: 1,
+    backgroundColor: '#778fb7',
+    borderWidth: 2,
     borderColor: 'black'
+  },
+  button: {
+    //flex:0.1,
+    borderWidth: 2,
+    borderColor: 'black',
+    alignItems: 'flex-end',
+    borderRadius: 3
+  },
+  titleContainer: {
+    flex: 0.9,
   }
 })
 
