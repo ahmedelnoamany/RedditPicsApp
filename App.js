@@ -5,6 +5,7 @@ import {
   View,
   TabBarIOS
 } from 'react-native';
+import TabBar from './src/Components/TabBar.js'
 import Posts from './src/Components/Posts.js';
 import Users from './src/Components/Users.js';
 import Settings from './src/Components/Settings.js';
@@ -17,50 +18,81 @@ export default class App extends Component {
       selectedTab: 'Posts'
     }
   }
+  selectedScreen = (screen) => {
+    if(screen === 'Tab1'){
+      this.setState({
+        currentScreen: (<View style={{ flex: 0.9 }}>
+          <Posts />
+        </View>)
+      })
+    }
+    if(screen === 'Tab2'){
+      this.setState({
+        currentScreen: (<View style={{ flex: 0.9 }}>
+          <Users />
+        </View>)
+      })
+    }
+    if(screen === 'Tab3'){
+      this.setState({
+        currentScreen: (<View style={{ flex: 0.9 }}>
+          <Settings />
+        </View>)
+      })
+    }
+  }
 
   render() {
     return (
-      <TabBarIOS
-        selectedTab = {this.state.selectedTab}
-        tintColor="black"
-        barTintColor="lightblue"
-        itemPositioning= "center"
-        unselectedTintColor= "white">
-        <TabBarIOS.Item
-          title= "Top Posts"
-          selected= {this.state.selectedTab === 'Posts'}
-          //icon = {{uri: 'featured'}}
-          onPress= {() => {
-            this.setState({
-              selectedTab: 'Posts'
-            })
-          }}>
-        <Posts />
-        </TabBarIOS.Item>
-
-        <TabBarIOS.Item
-          title= "Top Users"
-          selected = {this.state.selectedTab === 'Users'}
-          onPress = {() => {
-            this.setState({
-              selectedTab: 'Users'
-            })
-          }}>
-          <Users />
-        </TabBarIOS.Item>
-
-        <TabBarIOS.Item
-          title="Settings"
-          selected = {this.state.selectedTab === 'Settings'}
-          onPress = {() => {
-            this.setState({
-              selectedTab: 'Settings'
-            })
-          }}>
-          <Settings />
-          </TabBarIOS.Item>
-
-      </TabBarIOS>
+      <View style={{ flex: 1 }}>
+        {this.state.currentScreen}
+        <View style={{ flex: 0.1 }}>
+          <TabBar
+            selectedScreen={this.selectedScreen}
+          />
+        </View>
+      </View>
+      // <TabBarIOS
+      //   selectedTab = {this.state.selectedTab}
+      //   tintColor="black"
+      //   barTintColor="lightblue"
+      //   itemPositioning= "center"
+      //   unselectedTintColor= "white">
+      //   <TabBarIOS.Item
+      //     title= "Top Posts"
+      //     selected= {this.state.selectedTab === 'Posts'}
+      //     //icon = {{uri: 'featured'}}
+      //     onPress= {() => {
+      //       this.setState({
+      //         selectedTab: 'Posts'
+      //       })
+      //     }}>
+      //   <Posts />
+      //   </TabBarIOS.Item>
+      //
+      //   <TabBarIOS.Item
+      //     title= "Top Users"
+      //     selected = {this.state.selectedTab === 'Users'}
+      //     onPress = {() => {
+      //       this.setState({
+      //         selectedTab: 'Users'
+      //       })
+      //     }}>
+      //     <Users />
+      //   </TabBarIOS.Item>
+      //
+      //   <TabBarIOS.Item
+      //     title="Settings"
+      //     selected = {this.state.selectedTab === 'Settings'}
+      //     onPress = {() => {
+      //       this.setState({
+      //         selectedTab: 'Settings'
+      //       })
+      //     }}>
+      //     <Settings />
+      //     </TabBarIOS.Item>
+      //
+      // </TabBarIOS>
     );
   }
 }

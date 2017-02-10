@@ -78,7 +78,7 @@ class Posts extends Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.9,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#2e3438'

@@ -21,14 +21,13 @@ class Settings extends Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.9,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'blue'
 
   },
   text: {
-    flex:0.3,
     padding: 30,
     fontSize: 20,
     textAlign: 'center',
