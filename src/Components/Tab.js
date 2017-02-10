@@ -10,7 +10,7 @@ export default class Tab extends Component {
   render () {
     let selected = null
     if (this.props.selected){
-      selected = {backgroundColor: 'rgba(0,0,0,0.3)'}
+      selected = {backgroundColor: '#245aaf'}
     }
     return(
       <TouchableHighlight
@@ -19,7 +19,7 @@ export default class Tab extends Component {
         this.props.selectTab(this.props.tabNumber)}
         >
         <View style={styles.name}>
-          <Text>{this.props.name}</Text>
+          <Text style={styles.text}>{this.props.name}</Text>
         </View>
       </TouchableHighlight>
     )

@@ -52,47 +52,6 @@ export default class App extends Component {
           />
         </View>
       </View>
-      // <TabBarIOS
-      //   selectedTab = {this.state.selectedTab}
-      //   tintColor="black"
-      //   barTintColor="lightblue"
-      //   itemPositioning= "center"
-      //   unselectedTintColor= "white">
-      //   <TabBarIOS.Item
-      //     title= "Top Posts"
-      //     selected= {this.state.selectedTab === 'Posts'}
-      //     //icon = {{uri: 'featured'}}
-      //     onPress= {() => {
-      //       this.setState({
-      //         selectedTab: 'Posts'
-      //       })
-      //     }}>
-      //   <Posts />
-      //   </TabBarIOS.Item>
-      //
-      //   <TabBarIOS.Item
-      //     title= "Top Users"
-      //     selected = {this.state.selectedTab === 'Users'}
-      //     onPress = {() => {
-      //       this.setState({
-      //         selectedTab: 'Users'
-      //       })
-      //     }}>
-      //     <Users />
-      //   </TabBarIOS.Item>
-      //
-      //   <TabBarIOS.Item
-      //     title="Settings"
-      //     selected = {this.state.selectedTab === 'Settings'}
-      //     onPress = {() => {
-      //       this.setState({
-      //         selectedTab: 'Settings'
-      //       })
-      //     }}>
-      //     <Settings />
-      //     </TabBarIOS.Item>
-      //
-      // </TabBarIOS>
     );
   }
 }

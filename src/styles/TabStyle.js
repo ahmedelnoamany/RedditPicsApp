@@ -5,11 +5,14 @@ export default StyleSheet.create({
   container: {
   },
   name: {
-    borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.1)',
+    borderWidth: 2,
+    borderColor: '#081d3f',
     flex: 0.033,
     width: width / 3,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  text: {
+    color: 'white'
   }
 })
