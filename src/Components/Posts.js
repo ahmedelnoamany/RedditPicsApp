@@ -7,41 +7,20 @@ import{
   Button,
   Text
 } from 'react-native';
-import Card from './Card.js'
-import Login from './Login.js'
+
+import { connect } from "react-redux";
+import postsActions from "../redux/actions/postsActions"
+
+import store from '../store'
+import Card from './Card.js';
+import Login from './Login.js';
 
 class Posts extends Component{
-  constructor(){
-    super()
-    this.state= {
-      posts: [],
-      red: {backgroundColor: 'red'},
-      purple: {backgroundColor: 'purple'},
-      currentColor: null
-    }
+  componentWillMount() {
+    this.props.fetchJson()
   }
 
-  componentWillMount(){
-    console.log("mounting")
-    fetch('https://www.reddit.com/r/footballhighlights/top/.json?sort=top&t=all&limit=100',{
-      Accept: 'application/json'
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({posts: data.data.children})
-    })
-  }
-
-  switchColor = () => {
-    if (this.state.currentColor === this.state.red) {
-      this.setState({ currentColor: this.state.purple })
-    }
-    else {
-      this.setState({ currentColor: this.state.red })
-    }
-  }
-
-  getJson = (url) => {
+  getComments = (url) => {
     console.log(url)
     var address = url
     var jAddress = address.concat('.json')
@@ -67,8 +46,8 @@ class Posts extends Component{
           </View>
           <View style={{flex: 0.9}}>
             <ScrollView>
-            {this.state.posts.map((post,index) =>(
-              <TouchableOpacity onPress= {() => this.getJson(post.data.url)} key={post.data.id}>
+            {this.props.posts.map((post,index) =>(
+              <TouchableOpacity onPress= {() => this.getComments(post.data.url)} key={post.data.id}>
               <View style={[styles.post, this.state.currentColor]}>
                 <Text style={styles.title}>{post.data.title}</Text>
                 <Text style={styles.author}>{post.data.author}</Text>
@@ -83,6 +62,18 @@ class Posts extends Component{
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    posts: store.posts
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchJson: () => {
+    dispatch(fetchJson())
+  }
+})
 
 const styles = StyleSheet.create({
   container: {
@@ -133,4 +124,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Posts;
+export default connect(mapStateToProps, mapDispatchToProps)(Posts)

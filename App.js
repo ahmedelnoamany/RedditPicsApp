@@ -5,7 +5,11 @@ import {
   View,
   TabBarIOS
 } from 'react-native';
-import TabBar from './src/Components/TabBar.js'
+
+import { Provider } from "react-redux";
+
+import store from "./src/store";
+import TabBar from './src/Components/TabBar.js';
 import Posts from './src/Components/Posts.js';
 import Users from './src/Components/Users.js';
 import Settings from './src/Components/Settings.js';
@@ -44,14 +48,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        {this.state.currentScreen}
-        <View style={{ flex: 0.1 }}>
-          <TabBar
-            selectedScreen={this.selectedScreen}
-          />
-        </View>
-      </View>
+      <Provider store={store}>
+        <View style={{ flex: 1 }}>
+          {this.state.currentScreen}
+          <View style={{ flex: 0.1 }}>
+            <TabBar
+              selectedScreen={this.selectedScreen}
+            />
+          </View>
+          </View>
+      </Provider>
     );
   }
 }

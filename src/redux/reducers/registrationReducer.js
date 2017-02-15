@@ -14,7 +14,7 @@ export default function reducer(state={
           ...state.user,
           userName: action.payload,
         },
-        
+
       }
     }
     case "SET_PASSWORD": {
@@ -27,11 +27,6 @@ export default function reducer(state={
 
       }
     }
-    default: {
-      return {
-
-      }
-    }
-    return state
   }
+  return state
 }
