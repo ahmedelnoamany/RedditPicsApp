@@ -1,9 +1,9 @@
 import {applyMiddleware, createStore} from "redux"
-import logger from "redux-logger"
+import createLogger from "redux-logger"
 import thunk from "redux-thunk"
 
 import reducer from "./redux/reducers"
-
-const middleware = applyMiddleware(thunk, logger())
+const logger = createLogger()
+const middleware = applyMiddleware(thunk, logger)
 
 export default createStore(reducer, middleware)

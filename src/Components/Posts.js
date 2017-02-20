@@ -16,8 +16,9 @@ import Card from './Card.js';
 import Login from './Login.js';
 
 class Posts extends Component{
+
   componentWillMount() {
-    this.props.fetchJson()
+    this.props.getPosts()
   }
 
   getComments = (url) => {
@@ -32,6 +33,7 @@ class Posts extends Component{
     })
   }
   render() {
+    console.log(this.props)
     return (
         <View style={styles.titleContainer}>
           <View style={{flex: 0.1}}>
@@ -48,7 +50,7 @@ class Posts extends Component{
             <ScrollView>
             {this.props.posts.map((post,index) =>(
               <TouchableOpacity onPress= {() => this.getComments(post.data.url)} key={post.data.id}>
-              <View style={[styles.post, this.state.currentColor]}>
+              <View style={[styles.post]}>
                 <Text style={styles.title}>{post.data.title}</Text>
                 <Text style={styles.author}>{post.data.author}</Text>
                 <Text style={styles.author}>Comments: {post.data.num_comments}</Text>
@@ -65,13 +67,13 @@ class Posts extends Component{
 
 const mapStateToProps = state => {
   return {
-    posts: store.posts
+    posts: state.posts.posts
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchJson: () => {
-    dispatch(fetchJson())
+  getPosts: () => {
+    dispatch(postsActions.getPosts())
   }
 })
 
