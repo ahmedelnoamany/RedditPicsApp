@@ -14,6 +14,7 @@ import postsActions from "../redux/actions/postsActions"
 import store from '../store'
 import Card from './Card.js';
 import Login from './Login.js';
+import Comments from './Comments.js';
 
 class Posts extends Component{
 
@@ -29,7 +30,9 @@ class Posts extends Component{
     fetch(jAddress)
     .then(response => response.json())
     .then(data => {
-      this.setState({comments: data.children})
+      this.setState({comments: data.children,
+      selected: 'TabComments'})
+      this.props.selectedScreen('TabComments')
     })
   }
   render() {

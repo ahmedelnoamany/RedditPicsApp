@@ -13,6 +13,7 @@ import TabBar from './src/Components/TabBar.js';
 import Posts from './src/Components/Posts.js';
 import Users from './src/Components/Users.js';
 import Settings from './src/Components/Settings.js';
+import Comments from './src/Components/Comments.js';
 
 export default class App extends Component {
 
@@ -41,6 +42,13 @@ export default class App extends Component {
       this.setState({
         currentScreen: (<View style={{ flex: 0.9 }}>
           <Settings />
+        </View>)
+      })
+    }
+    if(screen === 'TabComments'){
+      this.setState({
+        currentScreen: (<View style={{ flex: 0.9 }}>
+          <Comments />
         </View>)
       })
     }
