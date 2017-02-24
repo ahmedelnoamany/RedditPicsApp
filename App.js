@@ -3,7 +3,8 @@ import {
   AppRegistry,
   Text,
   View,
-  TabBarIOS
+  Navigator,
+  TouchableHighlight
 } from 'react-native';
 
 import { Provider } from "react-redux";
@@ -48,16 +49,36 @@ export default class App extends Component {
   }
 
   render() {
+    const routes = [
+      {title: 'Main Scene', index: 0},
+      {title: 'Comments Scene', index: 1},
+    ]
     return (
       <Provider store={store}>
-        <View style={{ flex: 1 }}>
-          {this.state.currentScreen}
-          <View style={{ flex: 0.1 }}>
-            <TabBar
-              selectedScreen={this.selectedScreen}
-            />
+        <View style= {{flex: 1}}>
+          <Navigator
+            initialRoute={routes[0]}
+            initialRouteStack={routes}
+            renderScene={(route, navigator) =>
+              <View style={{flex:0.1}}>
+                {this.state.currentScreen}
+                <TabBar
+                  selectedScreen={this.selectedScreen}
+                />
+              {/* <TouchableHighlight onPress={() => {
+                if (route.index === 0){
+                  navigator.push(routes[1])
+                }
+                else {
+                  navigator.pop()
+                }
+              }}>
+              <Text>Hello {route.title} </Text>
+            </TouchableHighlight> */}
           </View>
-          </View>
+          }
+        />
+      </View>
       </Provider>
     );
   }
