@@ -15,14 +15,14 @@ return function(dispatch, getState) {
   }
 }
 
-setPosts: (data) => {
+export function setPosts(data){
   return {
     type: "FETCH_POSTS_COMPLETE",
     payload: data
   }
 }
 
-setError: (err) => {
+export function setError(err){
   return {
     type: "FETCH_POSTS_ERROR",
     payload: err
