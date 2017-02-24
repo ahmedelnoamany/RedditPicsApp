@@ -28,7 +28,8 @@ export default class App extends Component {
     if(screen === 'Tab1'){
       this.setState({
         currentScreen: (<View style={{ flex: 0.9 }}>
-          <Posts />
+          <Posts
+            />
         </View>)
       })
     }
@@ -46,6 +47,21 @@ export default class App extends Component {
         </View>)
       })
     }
+  }
+  goToPage = (name) => {
+    if (name === "Main Scene"){
+      if(route.index === 0){
+        return
+      }
+      navigator.pop()
+    }
+    else if (name === "Comments Scene"){
+      if(route.index === 1){
+        return
+      }
+      navigator.push(routes[1])
+    }
+
   }
 
   render() {
