@@ -30,9 +30,7 @@ class Posts extends Component{
     fetch(jAddress)
     .then(response => response.json())
     .then(data => {
-      this.setState({comments: data.children,
-      selected: 'TabComments'})
-      this.props.selectedScreen('TabComments')
+      this.setState({comments: data.children})
     })
   }
   render() {

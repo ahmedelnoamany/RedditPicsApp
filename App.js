@@ -45,13 +45,6 @@ export default class App extends Component {
         </View>)
       })
     }
-    if(screen === 'TabComments'){
-      this.setState({
-        currentScreen: (<View style={{ flex: 0.9 }}>
-          <Comments />
-        </View>)
-      })
-    }
   }
 
   render() {
