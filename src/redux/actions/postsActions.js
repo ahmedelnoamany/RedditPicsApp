@@ -1,4 +1,4 @@
-export function getPosts{
+export function getPosts(){
 return function(dispatch, getState) {
   fetch('https://www.reddit.com/r/footballhighlights/top/.json?sort=top&t=all&limit=100',{
     Accept: 'application/json'

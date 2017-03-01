@@ -6,6 +6,8 @@ import {
 import styles from '../styles/TabBarStyle.js'
 import Tab from './Tab.js'
 
+import store from '../store'
+
 export default class TabBar extends Component {
 
   constructor(props){
@@ -16,19 +18,7 @@ export default class TabBar extends Component {
   }
 
   componentDidMount = () => {
-    this.selectTab('Tab1')
-  }
-  selectTab = (tabName) => {
-    this.setState({
-      selected: tabName
-    })
-    this.props.selectedScreen(tabName)
-  }
-  isSelected = (selected) => {
-    if(this.state.selected === selected){
-        return true
-    }
-    return false
+    this.props.selectTab("Posts")
   }
   render () {
     return (
@@ -56,3 +46,13 @@ export default class TabBar extends Component {
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    selected: state.selected
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  selectTab: (name) => {
+    dispatch(selectTab(name))
+  }
+})
