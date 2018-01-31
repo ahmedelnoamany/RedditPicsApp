@@ -7,9 +7,9 @@ import {
 
 class Card extends Component {
   render (){
-    const cuntStyles = this.props.styles || {};
+    const cuStyles = this.props.styles || {};
     return(
-      <View style={[styles.container, styles.card, cuntStyles.card]}>
+      <View style={[styles.container, styles.card, cuStyles.card]}>
         {this.props.children}
       </View>
     );
